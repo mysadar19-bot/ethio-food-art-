@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ETHIO FOOD ART — Chef Michael Yohannes | Private Chef & Nutrition Coach</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+  :root{
+    --black:#0a0a0a;
+    --black-2:#141414;
+    --black-3:#1c1c1c;
+    --black-4:#262626;
+    --white:#f5f5f0;
+    --white-2:#d4d4cf;
+    --white-dim:#9a9a95;
+    --gold:#c9a961;
+    --gold-bright:#e0c478;
+    --gold-deep:#a88a45;
+    --hover-blue:#87ceeb;
+    --hover-blue-bright:#a4d8f0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    margin:0;
+    overflow-x:hidden;
+    letter-spacing:.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .font-serif{font-family:'Cormorant Garamond',serif}
+  .text-gold{color:var(--gold)}
+  .text-gold-bright{color:var(--gold-bright)}
+  .bg-gold{background:var(--gold)}
+  .bg-black-soft{background:var(--black-2)}
+  .bg-black-card{background:var(--black-3)}
+  .text-hover-blue{transition:color .35s ease, transform .35s ease}
+  .text-hover-blue:hover{color:var(--hover-blue)}
+  .border-gold{border-color:var(--gold)}
+  .gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
+  /* Social sidebar */
+  .social-sidebar{
+    position:fixed; left:0; top:0; bottom:0; z-index:60;
+    width:64px; background:rgba(10,10,10,.85); backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-right:1px solid rgba(201,169,97,.18);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:14px;
+  }
+  .social-sidebar a{
+    width:40px; height:40px; display:flex; align-items:center; justify-content:center;
+    color:var(--white-2); font-size:16px;
+    border:1px solid transparent; border-radius:50%;
+    transition:all .4s cubic-bezier(.2,.8,.2,1);
+    position:relative;
+  }
+  .social-sidebar a::before{
+    content:""; position:absolute; inset:0; border-radius:50%;
+    border:1px solid var(--gold); opacity:0; transform:scale(.6);
+    transition:all .4s ease;
+  }
+  .social-sidebar a:hover{
+    color:var(--hover-blue); transform:translateX(4px) scale(1.12);
+  }
+  .social-sidebar a:hover::before{opacity:1; transform:scale(1)}
+  .social-sidebar .label{
+    writing-mode:vertical-rl; transform:rotate(180deg);
+    font-size:10px; letter-spacing:.4em; color:var(--gold);
+    margin-bottom:18px; text-transform:uppercase;
+  }
+
+  /* Navigation */
+  .nav-wrap{
+    position:fixed; top:0; left:64px; right:0; z-index:50;
+    transition:all .5s ease;
+  }
+  .nav-wrap.scrolled{
+    background:rgba(10,10,10,.92); backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(201,169,97,.15);
+  }
+  .nav-link{
+    position:relative; padding:6px 0; font-size:12px;
+    letter-spacing:.28em; text-transform:uppercase; color:var(--white-2);
+    transition:color .35s ease;
+  }
+  .nav-link::after{
+    content:""; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--hover-blue); transition:width .4s ease;
+  }
+  .nav-link:hover{color:var(--hover-blue)}
+  .nav-link:hover::after{width:100%}
+
+  /* Hero */
+  .hero{
+    position:relative; min-height:100vh; width:100%;
+    overflow:hidden; display:flex; align-items:center;
+  }
+  .hero-slideshow{
+    position:absolute; inset:0; z-index:0;
+  }
+  .hero-slide{
+    position:absolute; inset:0; background-size:cover; background-position:center;
+    opacity:0; transition:opacity 2s ease;
+    transform:scale(1.08);
+    animation:kenburns 18s ease-in-out infinite;
+  }
+  .hero-slide.active{opacity:1}
+  @keyframes kenburns{
+    0%{transform:scale(1.08) translate(0,0)}
+    50%{transform:scale(1.18) translate(-2%,-1%)}
+    100%{transform:scale(1.08) translate(0,0)}
+  }
+  .hero-overlay{
+    position:absolute; inset:0; z-index:1;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(10,10,10,.4) 0%, rgba(10,10,10,.85) 70%),
+      linear-gradient(90deg, rgba(10,10,10,.9) 0%, rgba(10,10,10,.3) 50%, rgba(10,10,10,.7) 100%);
+  }
+  .hero-content{position:relative; z-index:2; padding-left:8vw; padding-right:8vw; width:100%}
+  .hero-tagline{
+    font-size:11px; letter-spacing:.5em; color:var(--gold);
+    text-transform:uppercase; margin-bottom:24px;
+    opacity:0; animation:fadeUp 1.2s .3s ease forwards;
+  }
+  .hero-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(40px, 8vw, 120px); font-weight:300; line-height:.95;
+    margin:0 0 8px; letter-spacing:-.01em;
+    opacity:0; animation:fadeUp 1.2s .5s ease forwards;
+  }
+  .hero-title .accent{font-style:italic; color:var(--gold-bright); font-weight:400}
+  .hero-sub{
+    font-size:14px; letter-spacing:.3em; color:var(--white-2);
+    text-transform:uppercase; margin-top:24px;
+    opacity:0; animation:fadeUp 1.2s .8s ease forwards;
+  }
+  .hero-cta{
+    display:inline-flex; align-items:center; gap:14px; margin-top:40px;
+    padding:16px 36px; border:1px solid var(--gold);
+    color:var(--gold); font-size:12px; letter-spacing:.3em; text-transform:uppercase;
+    background:transparent; cursor:pointer;
+    opacity:0; animation:fadeUp 1.2s 1.1s ease forwards;
+    transition:all .4s ease; position:relative; overflow:hidden;
+  }
+  .hero-cta::before{
+    content:""; position:absolute; inset:0; background:var(--gold);
+    transform:translateX(-101%); transition:transform .5s ease; z-index:-1;
+  }
+  .hero-cta:hover{color:var(--black); border-color:var(--hover-blue)}
+  .hero-cta:hover::before{transform:translateX(0); background:var(--hover-blue)}
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px)}
+    to{opacity:1; transform:translateY(0)}
+  }
+  .scroll-indicator{
+    position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+    z-index:3; color:var(--gold); font-size:10px; letter-spacing:.4em;
+    text-transform:uppercase; display:flex; flex-direction:column; align-items:center; gap:14px;
+  }
+  .scroll-indicator::after{
+    content:""; width:1px; height:60px; background:linear-gradient(var(--gold),transparent);
+    animation:scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse{
+    0%,100%{opacity:.3; height:40px}
+    50%{opacity:1; height:70px}
+  }
+
+  /* Section general */
+  section{position:relative; padding:120px 8vw}
+  .section-label{
+    font-size:11px; letter-spacing:.5em; color:var(--gold);
+    text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:14px;
+  }
+  .section-label::before{content:""; width:40px; height:1px; background:var(--gold)}
+  .section-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(32px, 5vw, 68px); font-weight:300; line-height:1.05;
+    margin:0 0 24px;
+  }
+  .section-title .italic{font-style:italic; color:var(--gold-bright)}
+
+  /* About */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center}
+  .about-img-wrap{position:relative}
+  .about-img{
+    width:100%; aspect-ratio:3/4; object-fit:cover;
+    filter:grayscale(.2) contrast(1.05);
+  }
+  .about-img-frame{
+    position:absolute; inset:-20px -20px auto auto; width:60%; height:80%;
+    border:1px solid var(--gold); z-index:-1;
+  }
+  .about-img-badge{
+    position:absolute; bottom:-30px; left:-30px;
+    background:var(--black-2); border:1px solid var(--gold);
+    padding:24px 32px; text-align:center;
+  }
+  .about-img-badge .num{font-family:'Cormorant Garamond',serif; font-size:48px; color:var(--gold-bright); line-height:1}
+  .about-img-badge .lbl{font-size:10px; letter-spacing:.3em; color:var(--white-2); text-transform:uppercase; margin-top:6px}
+
+  /* Services */
+  .service-card{
+    background:var(--black-2); border:1px solid rgba(201,169,97,.12);
+    padding:48px 36px; transition:all .5s ease; position:relative; overflow:hidden;
+  }
+  .service-card::before{
+    content:""; position:absolute; top:0; left:0; width:100%; height:2px;
+    background:var(--gold); transform:scaleX(0); transform-origin:left;
+    transition:transform .5s ease;
+  }
+  .service-card:hover{border-color:var(--hover-blue); transform:translateY(-8px)}
+  .service-card:hover::before{transform:scaleX(1); background:var(--hover-blue)}
+  .service-card:hover .service-icon{color:var(--hover-blue)}
+  .service-icon{font-size:36px; color:var(--gold); margin-bottom:24px; transition:color .4s ease}
+  .service-card h3{font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; margin:0 0 16px}
+  .service-card p{color:var(--white-dim); font-size:14px; line-height:1.8}
+  .service-list{margin-top:20px; padding:0; list-style:none}
+  .service-list li{
+    font-size:13px; color:var(--white-2); padding:8px 0;
+    border-bottom:1px dashed rgba(201,169,97,.15);
+    display:flex; align-items:center; gap:10px;
+  }
+  .service-list li::before{content:"—"; color:var(--gold)}
+
+  /* Carousel */
+  .carousel-wrap{position:relative; overflow:hidden; width:100%}
+  .carousel-track{display:flex; transition:transform .8s cubic-bezier(.7,0,.3,1); width:100%}
+  .carousel-slide{
+    flex:0 0 100%; padding:0 10px; width:100%; max-w:100%;
+  }
+  .carousel-card{
+    display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:center;
+    background:var(--black-2); border:1px solid rgba(201,169,97,.12);
+    overflow:hidden;
+  }
+  .carousel-img{width:100%; aspect-ratio:4/3; object-fit:cover; height:100%}
+  .carousel-body{padding:60px}
+  .carousel-body .dish-num{font-size:11px; letter-spacing:.4em; color:var(--gold); text-transform:uppercase}
+  .carousel-body h3{font-family:'Cormorant Garamond',serif; font-size:clamp(28px, 4vw, 48px); font-weight:300; margin:14px 0 8px; line-height:1.05}
+  .carousel-body .dish-sub{font-style:italic; color:var(--gold-bright); font-family:'Cormorant Garamond',serif; font-size:20px; margin-bottom:24px}
+  .carousel-body p{color:var(--white-dim); line-height:1.9; font-size:14px}
+  .carousel-body .dish-meta{display:flex; gap:30px; margin-top:30px; padding-top:24px; border-top:1px solid rgba(201,169,97,.15)}
+  .carousel-body .dish-meta div span:first-child{font-size:10px; letter-spacing:.3em; color:var(--gold); text-transform:uppercase; display:block; margin-bottom:6px}
+  .carousel-body .dish-meta div span:last-child{font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--white)}
+  .carousel-nav{
+    display:flex; gap:14px; justify-content:center; margin-top:50px; align-items:center;
+  }
+  .carousel-btn{
+    width:50px; height:50px; border:1px solid var(--gold); color:var(--gold);
+    background:transparent; cursor:pointer; transition:all .4s ease;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .carousel-btn:hover{background:var(--hover-blue); color:var(--black); border-color:var(--hover-blue)}
+  .carousel-dots{display:flex; gap:10px; padding:0 20px}
+  .carousel-dot{width:8px; height:8px; border-radius:50%; background:rgba(201,169,97,.3); cursor:pointer; transition:all .3s ease}
+  .carousel-dot.active{background:var(--gold); width:30px; border-radius:4px}
+
+  /* Gallery */
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;
+    grid-auto-rows:220px;
+  }
+  .gallery-item{
+    position:relative; overflow:hidden; cursor:pointer;
+  }
+  .gallery-item img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform 1.2s cubic-bezier(.2,.8,.2,1), filter .6s ease;
+    filter:brightness(.85) saturate(1.05);
+  }
+  .gallery-item:hover img{transform:scale(1.12); filter:brightness(1) saturate(1.15)}
+  .gallery-item::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg,rgba(10,10,10,.85) 0%,transparent 50%);
+    opacity:0; transition:opacity .5s ease;
+  }
+  .gallery-item:hover::after{opacity:1}
+  .gallery-cap{
+    position:absolute; bottom:20px; left:20px; right:20px; z-index:2;
+    transform:translateY(20px); opacity:0; transition:all .5s ease;
+  }
+  .gallery-item:hover .gallery-cap{transform:translateY(0); opacity:1}
+  .gallery-cap .ttl{font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white)}
+  .gallery-cap .sub{font-size:10px; letter-spacing:.3em; color:var(--hover-blue); text-transform:uppercase; margin-top:4px}
+  .gallery-tall{grid-row:span 2}
+  .gallery-wide{grid-column:span 2}
+
+  /* Contact */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:80px}
+  .form-field{margin-bottom:28px}
+  .form-field label{
+    display:block; font-size:10px; letter-spacing:.3em; color:var(--gold);
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  .form-field input, .form-field textarea, .form-field select{
+    width:100%; background:transparent; border:none; border-bottom:1px solid rgba(201,169,97,.3);
+    padding:12px 0; color:var(--white); font-family:'Jost',sans-serif; font-size:15px;
+    border-radius:0; -webkit-appearance: none; transition:border-color .4s ease;
+  }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus{
+    outline:none; border-bottom-color:var(--hover-blue);
+  }
+  .form-field textarea{resize:vertical; min-height:100px}
+  .submit-btn{
+    padding:18px 48px; background:transparent; border:1px solid var(--gold);
+    color:var(--gold); font-size:11px; letter-spacing:.4em; text-transform:uppercase;
+    cursor:pointer; transition:all .4s ease; position:relative; overflow:hidden;
+    width:100%;
+  }
+  .submit-btn:hover{background:var(--hover-blue); color:var(--black); border-color:var(--hover-blue)}
+  .contact-info-item{
+    display:flex; gap:20px; padding:24px 0; border-bottom:1px solid rgba(201,169,97,.12);
+  }
+  .contact-info-item .ico{
+    width:48px; height:48px; border:1px solid var(--gold); color:var(--gold);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    transition:all .4s ease;
+  }
+  .contact-info-item:hover .ico{background:var(--hover-blue); color:var(--black); border-color:var(--hover-blue)}
+  .contact-info-item .lbl{font-size:10px; letter-spacing:.3em; color:var(--gold); text-transform:uppercase; margin-bottom:6px}
+  .contact-info-item .val{font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--white)}
+  .contact-info-item .val a{color:var(--white); transition:color .3s ease}
+  .contact-info-item .val a:hover{color:var(--hover-blue)}
+
+  /* Footer */
+  footer{
+    background:var(--black-2); border-top:1px solid rgba(201,169,97,.18);
+    padding:80px 8vw 30px;
+  }
+  .footer-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:60px; margin-bottom:60px}
+  .footer-title{
+    font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--gold-bright);
+    margin-bottom:24px; display:flex; align-items:center; gap:14px;
+  }
+  .footer-title::before{content:""; width:30px; height:1px; background:var(--gold)}
+  .footer-hours li{
+    display:flex; justify-content:space-between; padding:10px 0;
+    border-bottom:1px dashed rgba(201,169,97,.12); font-size:13px;
+  }
+  .footer-hours li span:first-child{color:var(--white-2)}
+  .footer-hours li span:last-child{color:var(--gold); font-family:'Cormorant Garamond',serif; font-size:15px}
+  .footer-social{display:flex; gap:12px; flex-wrap:wrap}
+  .footer-social a{
+    width:42px; height:42px; border:1px solid rgba(201,169,97,.3); color:var(--white-2);
+    display:flex; align-items:center; justify-content:center;
+    transition:all .4s ease;
+  }
+  .footer-social a:hover{color:var(--hover-blue); border-color:var(--hover-blue); transform:translateY(-4px)}
+  .map-wrap{
+    width:100%; height:240px; border:1px solid rgba(201,169,97,.2); filter:grayscale(.6) invert(.9) hue-rotate(180deg);
+    -webkit-filter:grayscale(.6) invert(.9) hue-rotate(180deg);
+  }
+  .map-wrap iframe{width:100%; height:100%; border:0}
+  .footer-bottom{
+    border-top:1px solid rgba(201,169,97,.15); padding-top:30px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    font-size:11px; letter-spacing:.2em; color:var(--white-dim); text-transform:uppercase;
+  }
+
+  /* Toast */
+  .toast{
+    position:fixed; bottom:30px; right:30px; z-index:200;
+    background:var(--black-2); border:1px solid var(--gold);
+    color:var(--white); padding:18px 28px; min-width:280px;
+    transform:translateX(120%); transition:transform .5s cubic-bezier(.2,.8,.2,1);
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+  }
+  .toast.show{transform:translateX(0)}
+  .toast .ttl{color:var(--gold); font-size:11px; letter-spacing:.3em; text-transform:uppercase; margin-bottom:6px}
+  .toast .msg{font-size:14px; color:var(--white)}
+
+  /* Reveal animation */
+  .reveal{opacity:0; transform:translateY(40px); transition:opacity 1s ease, transform 1s ease}
+  .reveal.visible{opacity:1; transform:translateY(0)}
+
+  /* Decorative */
+  .deco-line{
+    width:80px; height:1px; background:var(--gold); margin:24px 0;
+  }
+  .quote-mark{
+    font-family:'Cormorant Garamond',serif; font-size:140px; line-height:.7;
+    color:var(--gold); opacity:.3;
+  }
+
+  /* Mobile menu */
+  .mobile-toggle{
+    display:none; background:transparent; border:1px solid var(--gold);
+    color:var(--gold); width:44px; height:44px; cursor:pointer;
+    align-items:center; justify-content:center;
+  }
+  .mobile-menu-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:54;
+    opacity:0; visibility:hidden; transition:all .4s ease;
+    backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+  }
+  .mobile-menu-overlay.open{opacity:1; visibility:visible}
+  .mobile-menu{
+    position:fixed; top:0; right:-100%; width:80%; max-width:380px; height:100vh;
+    background:var(--black-2); z-index:55; padding:100px 40px 40px;
+    transition:right .5s cubic-bezier(.7,0,.3,1); border-left:1px solid rgba(201,169,97,.2);
+    overflow-y:auto;
+  }
+  .mobile-menu.open{right:0}
+  .mobile-menu a{
+    display:block; font-family:'Cormorant Garamond',serif; font-size:28px;
+    color:var(--white); padding:14px 0; border-bottom:1px solid rgba(201,169,97,.12);
+    transition:color .3s ease;
+  }
+  .mobile-menu a:hover{color:var(--hover-blue)}
+  
+  /* Closing Button */
+  .mobile-close-btn{
+    position:absolute; top:24px; right:24px;
+    width:44px; height:44px; background:transparent;
+    border:1px solid var(--gold); color:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:all .3s ease; z-index:10;
+  }
+  .mobile-close-btn:hover{
+    background:var(--hover-blue); color:var(--black); border-color:var(--hover-blue);
+    transform:rotate(90deg);
+  }
+
+  /* ============ COMPLETE RESPONSIVE ENGINE ============ */
+  @media (max-width: 1024px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+    .carousel-card { grid-template-columns: 1fr; gap: 0; }
+    .carousel-body { padding: 40px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 50px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-wrap { left: 48px; }
+    .social-sidebar { width: 48px; }
+    .social-sidebar a { width: 36px; height: 36px; font-size: 14px; }
+  }
+
+  @media (max-width: 768px) {
+    .social-sidebar { display: none; }
+    .nav-wrap { left: 0; }
+    .nav-wrap nav { padding: 16px 5vw !important; }
+    .desktop-nav { display: none !important; }
+    .mobile-toggle { display: flex; }
+    
+    section { padding: 70px 5vw; }
+    .hero-content { padding-left: 5vw; padding-right: 5vw; }
+    .hero-title { font-size: clamp(36px, 10vw, 64px); }
+    .hero-tagline { font-size: 10px; letter-spacing: .3em; }
+    .hero-sub { font-size: 12px; letter-spacing: .2em; }
+    .hero-cta { padding: 14px 28px; font-size: 11px; }
+    .scroll-indicator { display: none; }
+
+    .about-img-frame { display: none; }
+    .about-img-badge { 
+      left: 50%; 
+      transform: translateX(-50%); 
+      bottom: -25px; 
+      padding: 16px 24px; 
+    }
+    .about-img-badge .num { font-size: 36px; }
+
+    .quote-mark { font-size: 80px; }
+
+    .carousel-img { height: auto; aspect-ratio: 16/9; width: 100%; }
+    .carousel-body { padding: 30px 20px; }
+    .carousel-body h3 { font-size: 28px; }
+    .carousel-body .dish-meta { flex-wrap: wrap; gap: 16px; }
+
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; gap: 8px; }
+    .gallery-tall { grid-row: span 1; }
+    .gallery-wide { grid-column: span 1; }
+    .gallery-item:first-child { grid-column: span 2; }
+    .gallery-item:nth-child(7) { grid-column: span 2; }
+    .gallery-cap { left: 10px; right: 10px; bottom: 10px; }
+    .gallery-cap .ttl { font-size: 16px; }
+    .gallery-cap .sub { font-size: 8px; }
+
+    #contactForm { padding: 24px !important; }
+    .contact-info-item .val { font-size: 18px; }
+
+    footer { padding: 60px 5vw 30px; }
+    .map-wrap { height: 200px; }
+    .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
+
+    .toast { left: 20px; right: 20px; bottom: 20px; min-width: auto; transform: translateY(150%); }
+    .toast.show { transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 36px; }
+    .section-title { font-size: 30px; }
+    .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+    .gallery-item:first-child,
+    .gallery-item:nth-child(7) { grid-column: span 1; }
+    
+    .grid-cols-3 { grid-template-columns: repeat(2, 1fr) !important; gap: 20px; }
+    .grid-cols-3 > div:last-child { grid-column: span 2; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LEFT SOCIAL SIDEBAR -->
+<aside class="social-sidebar" aria-label="Social media">
+  <div class="label">Follow</div>
+   <a href="https://instagram.com/ethio_food_art" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://tiktok.com/@ethio_food_art" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://facebook.com/EthioFoodArt" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://pinterest.com/Ethio_Food_Art" target="_blank" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+        <a href="https://youtube.com/@EthioFoodArt" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://wa.me/+251920300937" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://t.me/EthioFoodArt" target="_blank" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+</aside>
+
+<!-- NAVIGATION -->
+<div class="nav-wrap" id="navWrap">
+  <nav class="flex items-center justify-between px-10 py-6">
+    <a href="#home" class="flex items-center gap-3">
+      <div class="font-serif text-2xl tracking-wider">
+        <span class="text-gold-bright italic">Ethio</span>
+        <span class="text-white">Food Art</span>
+      </div>
+    </a>
+    <div class="desktop-nav flex items-center gap-10">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">The Chef</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#signature" class="nav-link">Signature</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <a href="#contact" class="desktop-nav hidden md:inline-flex items-center gap-3 px-6 py-3 border border-gold text-gold text-xs tracking-[.3em] uppercase text-hover-blue">
+      <i class="fa-solid fa-utensils text-[10px]"></i> Reserve
+    </a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Open Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
+</div>
+
+<!-- MOBILE MENU OVERLAY & MENU -->
+<div class="mobile-menu-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close-btn" id="closeMobileMenu" aria-label="Close Menu">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <a href="#home">Home</a>
+  <a href="#about">The Chef</a>
+  <a href="#services">Services</a>
+  <a href="#signature">Signature</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-slideshow" id="heroSlideshow">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1660120447916-123439b05c40?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=1920&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://plus.unsplash.com/premium_photo-1754337847030-ee9180b31740?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=1920&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1920&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1560799263-003a9e1b2f6e?auto=format&fit=crop&w=1920&q=80')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content max-w-5xl">
+    <div class="hero-tagline">Private Chef • Nutrition Coach • Ethiopia</div>
+    <h1 class="hero-title">
+      The Art of<br/>
+      <span class="accent">Ethiopian</span> Fine Dining
+    </h1>
+    <p class="hero-sub">Curated by Chef Michael Yohannes</p>
+    <a href="#contact" class="hero-cta">
+      <span>Book an Experience</span>
+      <i class="fa-solid fa-arrow-right text-[10px]"></i>
+    </a>
+  </div>
+  <div class="scroll-indicator">Scroll</div>
+</section>
+
+<!-- ABOUT THE CHEF -->
+<section id="about">
+  <div class="grid lg:grid-cols-2 gap-20 items-center reveal">
+    <div class="about-img-wrap">
+      <div class="about-img-frame"></div>
+      <img class="about-img" src="https://images.unsplash.com/photo-1616668856493-9df876327739?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=900&q=80" alt="Chef Michael Yohannes plating a fine dining dish"/>
+      <div class="about-img-badge">
+        <div class="num">14</div>
+        <div class="lbl">Years of Craft</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">The Chef</div>
+      <h2 class="section-title">Michael <span class="italic">Yohannes</span></h2>
+      <div class="deco-line"></div>
+      <p class="text-[15px] leading-[2] text-white-dim" style="color:var(--white-dim)">
+        Born in Addis Ababa and trained across Many 5 stars Hotel in Addis Ababa and UAE Dubai Italian Restaurant kitchens, Chef Michael Yohannes bridges the soul of Ethiopian cuisine with the discipline of contemporary fine dining. His philosophy is simple — every plate should tell a story of origin, season, and intention.
+      </p>
+      <p class="text-[15px] leading-[2] mt-6" style="color:var(--white-dim)">
+        As a certified nutrition coach, he designs menus that are as nourishing as they are beautiful — balancing macronutrients, ethically sourced ingredients, and bold flavor profiles tailored to each guest's lifestyle and dietary needs.
+      </p>
+      <div class="grid grid-cols-3 gap-6 mt-10">
+        <div>
+          <div class="font-serif text-4xl text-gold-bright">240+</div>
+          <div class="text-[10px] tracking-[.3em] uppercase mt-2" style="color:var(--white-dim)">Private Events</div>
+        </div>
+        <div>
+          <div class="font-serif text-4xl text-gold-bright">38</div>
+          <div class="text-[10px] tracking-[.3em] uppercase mt-2" style="color:var(--white-dim)">Countries</div>
+        </div>
+        <div>
+          <div class="font-serif text-4xl text-gold-bright">12</div>
+          <div class="text-[10px] tracking-[.3em] uppercase mt-2" style="color:var(--white-dim)">Cuisines Mastered</div>
+        </div>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <span class="px-4 py-2 border border-gold text-gold text-[10px] tracking-[.3em] uppercase text-hover-blue">Private Dining</span>
+        <span class="px-4 py-2 border border-gold text-gold text-[10px] tracking-[.3em] uppercase text-hover-blue">Nutrition Plans and Coaching </span>
+        <span class="px-4 py-2 border border-gold text-gold text-[10px] tracking-[.3em] uppercase text-hover-blue">Event Catering</span>
+        <span class="px-4 py-2 border border-gold text-gold text-[10px] tracking-[.3em] uppercase text-hover-blue">HACCP Trainingn</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE / PHILOSOPHY -->
+<section style="padding:80px 8vw; background:var(--black-2)">
+  <div class="text-center max-w-4xl mx-auto reveal">
+    <div class="quote-mark">"</div>
+    <p class="font-serif text-3xl md:text-4xl italic leading-snug" style="color:var(--white)">
+      Food is the most intimate form of art — it enters the body, becomes memory.
+      My kitchen is a studio where nutrition meets heritage, and every plate is painted with intention.
+    </p>
+    <div class="mt-8 text-[11px] tracking-[.4em] uppercase text-gold">— Diet and Nutrition Coach chef Michael Yohannes</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="text-center mb-20 reveal">
+    <div class="section-label justify-center" style="justify-content:center">What We Offer</div>
+    <h2 class="section-title">Curated <span class="italic">Culinary</span> Services</h2>
+    <p class="max-w-2xl mx-auto mt-6 text-[15px]" style="color:var(--white-dim)">
+      From intimate private dinners to large-scale buffets and personalized nutrition coaching — every service is designed around you.
+    </p>
+  </div>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
+      <h3>Private Chef Experience</h3>
+      <p>Exclusive multi-course tasting menus prepared in your kitchen, with wine pairings and tableside storytelling.</p>
+      <ul class="service-list">
+        <li>5 to 12 course menus</li>
+        <li>Sommelier pairing</li>
+        <li>Tableside service</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+      <h3>Nutrition Coaching</h3>
+      <p>Personalized meal plans grounded in clinical nutrition, designed for performance, longevity, or therapeutic goals.</p>
+      <ul class="service-list">
+        <li>Macro &amp; micro planning</li>
+        <li>Weekly check-ins</li>
+        <li>Diet-specific recipes</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+      <h3>Event &amp; Buffet Catering</h3>
+      <p>Architectural buffet setups and live stations for weddings, corporate galas, and private celebrations.</p>
+      <ul class="service-list">
+        <li>Live cooking stations</li>
+        <li>Themed decor</li>
+        <li>Up to 500 guests</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-seedling"></i></div>
+      <h3>Plant-Based Menus</h3>
+      <p>Vegan and vegetarian tasting experiences celebrating Ethiopian roots with modern technique.</p>
+      <ul class="service-list">
+        <li>Seasonal produce</li>
+        <li>Protein-balanced</li>
+        <li>Fermented specialties</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-flask"></i></div>
+      <h3>Culinary Workshops</h3>
+      <p>Private and group masterclasses in plating, fermentation, and nutrition-focused cooking.</p>
+      <ul class="service-list">
+        <li>Hands-on sessions</li>
+        <li>Recipe booklet</li>
+        <li>Pantry essentials kit</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-spa"></i></div>
+      <h3>Wellness Retreats</h3>
+      <p>Multi-day culinary wellness journeys combining mindful eating, movement, and chef-curated menus.</p>
+      <ul class="service-list">
+        <li>3–7 day programs</li>
+        <li>Mediteranian Diet </li>
+        <li>Retox cuisine</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE CAROUSEL -->
+<section id="signature" style="background:var(--black-2)">
+  <div class="text-center mb-16 reveal">
+    <div class="section-label" style="justify-content:center">Signature Selection</div>
+    <h2 class="section-title">A <span class="italic">Tasting</span> of the Menu</h2>
+  </div>
+  <div class="carousel-wrap reveal">
+    <div class="carousel-track" id="carouselTrack">
+      <!-- Slides injected by JS -->
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="text-center mb-16 reveal">
+    <div class="section-label" style="justify-content:center">Visual Menu</div>
+    <h2 class="section-title">Fine Dining <span class="italic">Gallery</span></h2>
+    <p class="max-w-2xl mx-auto mt-6 text-[15px]" style="color:var(--white-dim)">A curated selection of plates, platings, and buffet installations by Chef Michael.</p>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item gallery-tall gallery-wide">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=80" alt="Plated fine dining"/>
+      <div class="gallery-cap"><div class="ttl">Spring Tasting</div><div class="sub">Plated • 9 Courses</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80" alt="Salmon dish"/>
+      <div class="gallery-cap"><div class="ttl">Salmon Confit</div><div class="sub">Seafood</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80" alt="Gourmet plating"/>
+      <div class="gallery-cap"><div class="ttl">Heritage Plate</div><div class="sub">Signature</div></div>
+    </div>
+    <div class="gallery-item gallery-tall">
+      <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80" alt="Dessert plating"/>
+      <div class="gallery-cap"><div class="ttl">Honey Tuile</div><div class="sub">Dessert</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80" alt="Fine dining dish"/>
+      <div class="gallery-cap"><div class="ttl">Garden Composition</div><div class="sub">Arabic grill combo</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=800&q=80" alt="Vegetable plating"/>
+      <div class="gallery-cap"><div class="ttl">Roots Study</div><div class="sub">Plant-Based</div></div>
+    </div>
+    <div class="gallery-item gallery-wide">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80" alt="Restaurant table"/>
+      <div class="gallery-cap"><div class="ttl">Private Dining Room</div><div class="sub">Atmosphere</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Food spread"/>
+      <div class="gallery-cap"><div class="ttl">Tasting Spread</div><div class="sub">Buffet</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1616671285410-2a676a9a433d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmluZSUyMGRpbmluZyUyMHBsYXRpbmd8ZW58MHx8MHx8fDA%3D?auto=format&fit=crop&w=800&q=80" alt="Plating art"/>
+      <div class="gallery-cap"><div class="ttl">Fine Dinning</div><div class="sub">Plating Art</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://plus.unsplash.com/premium_photo-1754269311276-165b4deaa6d6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Zm9vZCUyMGJ1ZmZldCUyMHNldHVwfGVufDB8fDB8fHww?auto=format&fit=crop&w=800&q=80" alt="Buffet setup"/>
+      <div class="gallery-cap"><div class="ttl">Grand Buffet</div><div class="sub">Installation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--black-2)">
+  <div class="text-center mb-16 reveal">
+    <div class="section-label" style="justify-content:center">Reserve</div>
+    <h2 class="section-title">Begin Your <span class="italic">Experience</span></h2>
+    <p class="max-w-2xl mx-auto mt-6 text-[15px]" style="color:var(--white-dim)">Share your vision and we'll craft a menu that reflects your taste, dietary needs, and occasion.</p>
+  </div>
+  <div class="contact-grid reveal">
+    <form action="https://formsubmit.co/mysadar19@email.com"  method="POST" >
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="form-field">
+          <label>First Name</label>
+          <input type="text" name="firstName" required placeholder="Your name"/>
+        </div>
+        <div class="form-field">
+          <label>Last Name</label>
+          <input type="text" name="lastName" required placeholder="Your surname"/>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" name="email" required placeholder="you@email.com"/>
+        </div>
+        <div class="form-field">
+          <label>Phone</label>
+          <input type="tel" name="phone" required placeholder="+251 ..."/>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="form-field">
+          <label>Service</label>
+          <select name="service"required placeholder="you@email.com"/>
+            <option style="background:var(--black)">Private Chef Dinner</option>
+            <option style="background:var(--black)">Event Catering</option>
+            <option style="background:var(--black)">Nutrition Coaching</option>
+            <option style="background:var(--black)">Workshop</option>
+            <option style="background:var(--black)">Wellness Retreat</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Date</label>
+          <input type="date" required placeholder name="date"/>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea name="message" placeholder="Tell us about your event, guests, dietary preferences..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Request</button>
+    </form>
+
+    <div>
+      <div class="contact-info-item">
+        <div class="ico"><i class="fa-solid fa-location-dot"></i></div>
+        <div>
+          <div class="lbl">Atelier</div>
+          <div class="val">Bole Road, Addis Ababa, Ethiopia</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ico"><i class="fa-solid fa-phone"></i></div>
+        <div>
+          <div class="lbl">Reservations</div>
+          <div class="val"><a href="tel:+251000000000">+251 920300937</a></div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ico"><i class="fa-solid fa-envelope"></i></div>
+        <div>
+          <div class="lbl">Email</div>
+          <div class="val"><a href="mailto:mysadar19@gmail.com">ethiofoodart.com</a></div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ico"><i class="fa-solid fa-clock"></i></div>
+        <div>
+          <div class="lbl">Response Time</div>
+          <div class="val">Within 24 Hours</div>
+        </div>
+      </div>
+      <div class="mt-10 p-6 border" style="border-color:rgba(201,169,97,.15)">
+        <div class="text-[11px] tracking-[.3em] uppercase text-gold mb-3">Preferred Contact</div>
+        <p class="text-sm leading-relaxed" style="color:var(--white-dim)">For urgent inquiries or last-minute bookings, message us directly on WhatsApp or Telegram — links in the sidebar and footer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-title">Ethio Food Art</div>
+      <p class="text-sm leading-relaxed mb-6" style="color:var(--white-dim)">
+        A private chef and nutrition atelier by Michael Yohannes. Curated fine dining experiences rooted in Ethiopian heritage, crafted with European technique, and tailored to your wellbeing.
+      </p>
+      <div class="footer-social">
+        <a href="https://instagram.com/ethio_food_art" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://tiktok.com/@ethio_food_art" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://facebook.com/EthioFoodArt" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://pinterest.com/Ethio_Food_Art" target="_blank" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+        <a href="https://youtube.com/@EthioFoodArt" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://wa.me/+251920300937" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://t.me/EthioFoodArt" target="_blank" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-title">Opening Hours</div>
+      <ul class="footer-hours">
+        <li><span>Monday</span><span>Closed</span></li>
+        <li><span>Tuesday – Friday</span><span>10:00 – 22:00</span></li>
+        <li><span>Saturday</span><span>09:00 – 23:00</span></li>
+        <li><span>Sunday</span><span>10:00 – 18:00</span></li>
+        <li><span>Holidays</span><span>By Reservation</span></li>
+      </ul>
+      <div class="mt-6 p-4 border" style="border-color:rgba(201,169,97,.15)">
+        <div class="text-[10px] tracking-[.3em] uppercase text-gold mb-2">Private Bookings</div>
+        <p class="text-sm" style="color:var(--white-dim)">Available outside regular hours by appointment.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-title">Find the Atelier</div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63019.19642331873!2d38.7157!3d9.0084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x8467b6b7b20f8bcc!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2sus!4v1700000000000"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p class="text-xs mt-4" style="color:var(--white-dim)">
+        <i class="fa-solid fa-location-dot text-gold mr-2"></i> Bole Road, Addis Ababa, Ethiopia
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 ETHIO FOOD ART — Chef Michael Yohannes. All Rights Reserved.</div>
+    <div>Privacy • Terms • Crafted with Intention</div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="ttl" id="toastTitle">Thank You</div>
+  <div class="msg" id="toastMsg">Your request has been received. We'll be in touch within 24 hours.</div>
+</div>
+
+<script>
+/* ============ NAV SCROLL ============ */
+const navWrap = document.getElementById('navWrap');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) navWrap.classList.add('scrolled');
+  else navWrap.classList.remove('scrolled');
+});
+
+/* ============ MOBILE MENU & CLOSING BUTTON ============ */
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileOverlay');
+const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+function openMenu() {
+  mobileMenu.classList.add('open');
+  mobileOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden'; 
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  mobileOverlay.classList.remove('open');
+  document.body.style.overflow = ''; 
+}
+
+mobileToggle.addEventListener('click', openMenu);
+closeMobileMenu.addEventListener('click', closeMenu);
+mobileOverlay.addEventListener('click', closeMenu);
+
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+/* ============ HERO SLIDESHOW ============ */
+const slides = document.querySelectorAll('.hero-slide');
+let slideIdx = 0;
+setInterval(() => {
+  if(slides.length === 0) return;
+  slides[slideIdx].classList.remove('active');
+  slideIdx = (slideIdx + 1) % slides.length;
+  slides[slideIdx].classList.add('active');
+}, 6000);
+
+/* ============ CAROUSEL DATA ============ */
+const dishes = [
+  {
+    num: '01 / 06',
+    title: 'Berbere Crusted Lamb',
+    sub: 'with injera crisp & aged honey',
+    desc: 'A reimagined Ethiopian classic — slow-braised lamb loin crusted with toasted berbere, set on a fermented injera tuile and finished with raw aged honey from the highlands of Wollo.',
+    img: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80',
+    meta: [['Course', 'Main'], ['Pairing', 'Ethiopian Mead'], ['Prep', '48 Hours']]
+  },
+  {
+    num: '02 / 06',
+    title: 'Teff Risotto Nero',
+    sub: 'black garlic & smoked ghee',
+    desc: 'Native teff grain slow-cooked in the style of risotto, layered with black garlic confit, smoked Ethiopian ghee, and shaved aged parmesan.',
+    img: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=1200&q=80',
+    meta: [['Course', 'Primi'], ['Pairing', 'Orange Wine'], ['Prep', '24 Hours']]
+  },
+  {
+    num: '03 / 06',
+    title: 'Blue Nile Ocean Plate',
+    sub: 'ocean trout · citrus · dill oil',
+    desc: 'Thinly sliced ocean trout cured in citrus and berbere, presented as a river flow with dill oil, finger lime caviar, and crystallized sea salt.',
+    img: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1200&q=80',
+    meta: [['Course', 'Antipasti'], ['Pairing', 'Sauvignon Blanc'], ['Prep', '12 Hours']]
+  },
+  {
+    num: '04 / 06',
+    title: 'Highland Garden',
+    sub: 'seasonal vegetables · miso · grain',
+    desc: 'A composition of roasted and raw seasonal vegetables from the Ethiopian highlands, dressed with white miso and a fermented grain emulsion.',
+    img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80',
+    meta: [['Course', 'Plant-Based'], ['Pairing', 'Skin-Contact'], ['Prep', '8 Hours']]
+  },
+  {
+    num: '05 / 06',
+    title: 'Coffee Ceremony Dessert',
+    sub: 'bean · 70% chocolate · cardamom',
+    desc: 'A tribute to the Ethiopian coffee ceremony — espresso ganache, cardamom sponge, roasted bean crunch, and a smoke-infused chocolate veil.',
+    img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1200&q=80',
+    meta: [['Course', 'Dessert'], ['Pairing', 'Buna Liqueur'], ['Prep', '18 Hours']]
+  },
+  {
+    num: '06 / 06',
+    title: 'Grand Buffet Installation',
+    sub: 'live stations · themed · sculptural',
+    desc: 'A full-scale buffet experience featuring live cooking stations, ice sculptures, and architectural food installations designed for galas of up to 500 guests.',
+    img: 'https://images.unsplash.com/photo-1593755768134-fa73738bcb77?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3JhbmQlMjBidWZmZXQlMjBpbnN0YWxsYXRpb258ZW58MHx8MHx8fDA%3D?auto=format&fit=crop&w=1200&q=80',
+    meta: [['Service', 'Catering'], ['Capacity', 'Up to 500'], ['Setup', '4 Hours']]
+  }
+];
+
+const track = document.getElementById('carouselTrack');
+const dotsWrap = document.getElementById('carouselDots');
+let currentSlide = 0;
+
+dishes.forEach((d, i) => {
+  const slide = document.createElement('div');
+  slide.className = 'carousel-slide';
+  slide.innerHTML = `
+    <div class="carousel-card">
+      <img class="carousel-img" src="${d.img}" alt="${d.title}"/>
+      <div class="carousel-body">
+        <div class="dish-num">${d.num}</div>
+        <h3>${d.title}</h3>
+        <div class="dish-sub">${d.sub}</div>
+        <p>${d.desc}</p>
+        <div class="dish-meta">
+          ${d.meta.map(m => `<div><span>${m[0]}</span><span>${m[1]}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+  track.appendChild(slide);
+
+  const dot = document.createElement('div');
+  dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsWrap.appendChild(dot);
+});
+
+function goToSlide(idx) {
+  if(dishes.length === 0) return;
+  currentSlide = (idx + dishes.length) % dishes.length;
+  track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
+  });
+}
+document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
+document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
+setInterval(() => goToSlide(currentSlide + 1), 7000);
+
+/* ============ REVEAL ON SCROLL ============ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ============ CONTACT FORM ============ */
+const form = document.getElementById('contactForm');
+const toast = document.getElementById('toast');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const name = (data.get('firstName') || '') + ' ' + (data.get('lastName') || '');
+  document.getElementById('toastTitle').textContent = 'Request Received';
+  document.getElementById('toastMsg').textContent = `Thank you, ${name.trim() || 'guest'}. Chef Michael's team will respond within 24 hours.`;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4500);
+  form.reset();
+});
+</script>
+</body>
+</html>
